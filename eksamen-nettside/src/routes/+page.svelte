@@ -27,11 +27,11 @@
   }
 
 </script>
-<div id="main" class="flex flex-col justify-center w-screen h-screen bg-navy">
+<div id="main" class="flex flex-col items-center w-screen h-screen bg-navy">
   <div id="navbar" class="flex justify-evenly items-center w-full h-1/6 bg-purple"> 
-    <div class="flex justify-center items-center w-1/12 h-1/4 rounded-lg bg-orange font-mono text-4xl">
+    <a href="/question" class="flex justify-center btn items-center w-1/12 h-1/4 rounded-lg bg-orange font-mono text-4xl">
       FAQ
-    </div>
+    </a>
     <div class="flex justify-center items-center w-1/6 h-2/5 rounded-lg bg-orange font-mono text-5xl">
       High score {HighScore}
     </div>
@@ -47,7 +47,6 @@
   .btn {
     transition: transform 0.05s ease;
   }
-
   .btn:active {
     transform: scale(0.95);
   }

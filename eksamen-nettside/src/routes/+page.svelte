@@ -52,7 +52,7 @@
     <a href="/question" class="flex justify-center btn items-center w-2/12 h-1/4 rounded-lg bg-orange font-mono text-2xl">
       Scoreboard
     </a>
-    <div class="flex justify-center items-center w-1/6 h-2/5 rounded-lg bg-orange font-mono text-3xl">
+    <div class="flex justify-center items-center w-64 h-2/5 rounded-lg bg-orange font-mono text-3xl">
       High score {$HighScore}
     </div>
     <a href="/login" class="flex justify-center items-center w-1/12 h-1/4 rounded-lg bg-orange font-mono text-2xl">

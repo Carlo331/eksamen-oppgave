@@ -4,18 +4,30 @@
   import { HighScore, Bruker } from '/src/stores'
   import { onMount } from 'svelte'
   import Score from '../components/score.svelte'
+  import {writable} from 'svelte/store'
 
-  let HighScores = []
+  export const HighScores = writable([])
 
-  async function fetchHighScores() {
-    const highScoresRef = collection(db, 'HighScores')
-    const q = query(highScoresRef, orderBy('score', 'desc'))
+async function fetchHighScores() {
+  console.log("Fetching high scores...")
+  try {
+    const highScoresRef = collection(db, 'users')
+    const q = query(highScoresRef, orderBy('HighScore', 'desc'))
     const querySnapshot = await getDocs(q)
-    HighScores = querySnapshot.docs.map(doc => doc.data())
+    const scores = querySnapshot.docs.map(doc => ({
+      user: doc.id,
+      score: doc.data().HighScore
+    }));
+    HighScores.set(scores)
+    console.log("High scores fetched:", scores)
+  } catch (error) {
+    console.error("Error fetching high scores:", error)
   }
+}
 
-  onMount(fetchHighScores)
-  console.log(HighScores)
+onMount(() => {
+  fetchHighScores();
+});
 </script>
 <div id="main" class="flex flex-col items-center w-screen h-screen bg-black">
   <div id="navbar" class="flex justify-evenly items-center w-full h-1/6 bg-navy">
@@ -32,8 +44,8 @@
           {$Bruker}
       </div>
   </div>
-  <div class="flex flex-col items-center justify-between w-5/6 md:w-4/6 h-4/6 bg-sky rounded-xl mt-16">
-    {#each HighScores as score, index}
+  <div class="flex flex-col items-center w-5/6 md:w-4/6 h-4/6 bg-sky rounded-xl mt-16">
+    {#each $HighScores as score, index}
       <Score user={score.user} score={score.score} index={index}/>
     {/each}
   </div>

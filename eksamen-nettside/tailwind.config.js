@@ -3,10 +3,10 @@ export default {
   content: ['./src/**/*.{html,js,svelte,ts}'],
   theme: {
     colors: {
-      'navy': '#26355D',
-      'purple': '#AF47D2',
-      'orange': '#FF8F00',
-      'yellow': '#FFDB00',
+      'black': '#1B262C',
+      'navy': '#0F4C75',
+      'blue': '#3282B8',
+      'sky': '#BBE1FA',
     },
   },
   plugins: []

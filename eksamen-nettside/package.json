@@ -19,6 +19,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"bcryptjs": "^2.4.3",
 		"firebase": "^10.12.2"
 	}
 }

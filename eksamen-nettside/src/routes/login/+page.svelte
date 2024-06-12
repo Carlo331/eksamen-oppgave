@@ -4,6 +4,7 @@
     import { doc, setDoc, getDoc } from 'firebase/firestore';
     import { HighScore } from '/src/stores'
     import { Bruker } from '/src/stores'
+    import bcrypt from 'bcryptjs'
 
     let BrukerNavn = ""
     let Password = ""
@@ -13,7 +14,8 @@
       const userDoc = await getDoc(doc(db, 'users', BrukerNavn))
       if (userDoc.exists()) {
         const userData = userDoc.data()
-        if (userData.Password == Password) {
+        const PasswordMatch = await bcrypt.compare(Password, userData.Password)
+        if (PasswordMatch) {
             console.log('User logged in:', BrukerNavn)
             console.log('User data:', userData)
             HighScore.set(userData.HighScore)
@@ -39,9 +41,10 @@
         console.error('User already exists')
       } 
       else {
-            await setDoc(doc(db, 'users', BrukerNavn), {
-          Password: Password,
-          HighScore: 0
+        const HashedPassword = await bcrypt.hash(Password, 10)
+        await setDoc(doc(db, 'users', BrukerNavn), {
+        Password: HashedPassword,
+        HighScore: 0
         })
         console.log('User registered:', BrukerNavn)
         HighScore.set(userData.HighScore)

@@ -18,8 +18,6 @@ Følg disse trinnene for å sette opp prosjektet lokalt:
 1. **Klon repoen:**
     ```bash
     git clone https://github.com/Carlo331/eksamen-oppgave.git
-    cd eksamen-oppgave
-    cd eksamen-nettside
     ```
 2. **Gå inn i riktig fil:**
     ```bash

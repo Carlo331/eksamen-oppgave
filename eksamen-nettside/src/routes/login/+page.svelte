@@ -8,9 +8,10 @@
 
     let BrukerNavn = ""
     let Password = ""
-    
+
     async function login() {
     try {
+      console.log("i runsss")
       const userDoc = await getDoc(doc(db, 'users', BrukerNavn))
       if (userDoc.exists()) {
         const userData = userDoc.data()
@@ -46,9 +47,8 @@
         Password: HashedPassword,
         HighScore: 0
         })
-        console.log('User registered:', BrukerNavn)
-        HighScore.set(userData.HighScore)
-        Bruker.set(BrukerNavn)
+        console.log('User registered:', BrukerNavn)   
+        await login() 
       }
     } 
     catch (error) {

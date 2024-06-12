@@ -32,9 +32,17 @@
           {$Bruker}
       </div>
   </div>
-  <div class="flex flex-col items-center justify-between w-4/6 h-4/6 bg-yellow rounded-xl mt-16">
+  <div class="flex flex-col items-center justify-between w-5/6 md:w-4/6 h-4/6 bg-sky rounded-xl mt-16">
     {#each HighScores as score, index}
       <Score user={score.user} score={score.score} index={index}/>
     {/each}
   </div>
 </div>
+<style>
+  .btn {
+    transition: transform 0.05s ease;
+  }
+  .btn:active {
+    transform: scale(0.95);
+  }
+</style>

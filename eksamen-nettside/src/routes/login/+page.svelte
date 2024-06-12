@@ -13,7 +13,7 @@
       const userDoc = await getDoc(doc(db, 'users', BrukerNavn))
       if (userDoc.exists()) {
         const userData = userDoc.data()
-        if (userData.Password === Password) {
+        if (userData.Password == Password) {
             console.log('User logged in:', BrukerNavn)
             console.log('User data:', userData)
             HighScore.set(userData.HighScore)
@@ -39,7 +39,7 @@
         console.error('User already exists')
       } 
       else {
-        await setDoc(doc(db, 'users', BrukerNavn), {
+            await setDoc(doc(db, 'users', BrukerNavn), {
           Password: Password,
           HighScore: 0
         })
@@ -68,7 +68,7 @@
             {$Bruker}
         </div>
     </div>
-    <div class="flex flex-col items-center justify-between w-2/6 h-4/6 bg-sky rounded-xl mt-16">
+    <div class="flex flex-col items-center justify-between w-5/6 md:w-2/6 h-4/6 bg-sky rounded-xl mt-16">
         <div class="flex flex-col w-5/6 h-2/6 justify-evenly">
             <input class="bg-blue text-xl rounded w-full h-12" type="email" bind:value={BrukerNavn} placeholder="Bruker Navn" />
             <input class="bg-blue text-xl rounded w-full h-12" type="password" bind:value={Password} placeholder="Password" />
@@ -79,4 +79,11 @@
         </div>
     </div>
   </div>
-  
+  <style>
+    .btn {
+      transition: transform 0.05s ease;
+    }
+    .btn:active {
+      transform: scale(0.95);
+    }
+  </style>

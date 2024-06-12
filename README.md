@@ -21,13 +21,18 @@ Følg disse trinnene for å sette opp prosjektet lokalt:
     cd eksamen-oppgave
     cd eksamen-nettside
     ```
+2. **Gå inn i riktig fil:**
+    ```bash
+    cd eksamen-oppgave
+    cd eksamen-nettside
+    ```
 
-2. **Installer avhengigheter:**
+3. **Installer NPM:**
     ```bash
     npm install
     ```
 
-3. **Start utviklingsserveren:**
+4. **Kjør prosjektet:**
     ```bash
     npm run dev
     ```

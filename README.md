@@ -19,6 +19,7 @@ Følg disse trinnene for å sette opp prosjektet lokalt:
     ```bash
     git clone https://github.com/Carlo331/eksamen-oppgave.git
     cd eksamen-oppgave
+    cd eksamen-nettside
     ```
 
 2. **Installer avhengigheter:**

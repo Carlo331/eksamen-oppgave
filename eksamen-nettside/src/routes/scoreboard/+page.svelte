@@ -44,7 +44,7 @@ onMount(() => {
           {$Bruker}
       </div>
   </div>
-  <div class="flex flex-col items-center w-5/6 md:w-4/6 h-4/6 bg-sky rounded-xl mt-16">
+  <div class="flex flex-col overflow-auto items-center w-5/6 md:w-4/6 h-4/6 bg-sky rounded-xl mt-16">
     {#each $HighScores as score, index}
       <Score user={score.user} score={score.score} index={index}/>
     {/each}

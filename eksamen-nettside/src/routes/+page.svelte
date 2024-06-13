@@ -32,7 +32,7 @@
         if (userDocSnap.exists()) {
           console.log("Updating high score for user:", $Bruker)
           await updateDoc(userDocRef, {
-            HighScore: ButtonNumber
+            HighScore: $HighScore
           })
           console.log("High Score updated")
         } 

@@ -23,11 +23,11 @@
             Bruker.set(BrukerNavn)
         } 
         else {
-          console.error('feil password')
+          alert('Feil password')
         }
       } 
       else {
-        console.error('Dette finnes ikke')
+        alert('Denne brukeren finnes ikke')
       }
     } 
     catch (error) {
@@ -39,7 +39,7 @@
     try {
       const userDoc = await getDoc(doc(db, 'users', BrukerNavn))
       if (userDoc.exists()) {
-        console.error('User already exists')
+        alert('brukeren finnes alerede')
       } 
       else {
         const HashedPassword = await bcrypt.hash(Password, 10)

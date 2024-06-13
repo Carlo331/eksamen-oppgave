@@ -3,10 +3,20 @@
   import { db } from '/src/lib/firebase';
   import { doc, updateDoc, getDoc } from 'firebase/firestore';
   import { HighScore, Bruker } from '/src/stores'
+  import { onMount } from "svelte";
 
   let ButtonNumber = 0 
+
+  let lastCallTime = 0
+  const debounceTime = 150
   
   async function Button(){
+    const currentTime = Date.now()
+    if (currentTime - lastCallTime < debounceTime) {
+      return
+    }
+    lastCallTime = currentTime
+
     ButtonNumber = ButtonNumber + 1
 
     let Random = Math.round(Math.random() * 99) 
@@ -31,14 +41,25 @@
           console.log("High Score updated")
         } 
         else {
-          console.error("User document does not exist.")
+          alert("Du har ingen bruker. Dette gjør at din Highscore ikke blir lagret til neste gang")
         }
       } 
       catch (error) {
-        console.error("Error updating high score: ", error)
+        alert("Du har ingen bruker. Dette gjør at din Highscore ikke blir lagret til neste gang")
       }
     }
+    
   }
+  onMount(() => {
+    document.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+      if (document.activeElement.id === 'Button') {
+        alert("Enter er ulovlig. (for gode grunner)")
+        ButtonNumber = 0
+      }
+    }
+  })
+  })
 </script>
 <div id="main" class="flex flex-col items-center bg-black w-screen h-screen">
   <div id="navbar" class="flex justify-evenly items-center w-full h-1/6 bg-navy">
@@ -56,7 +77,7 @@
         </div>
   </div>
   <div id="resten" class="flex justify-center items-center w-full h-5/6">
-      <button on:click={()=>Button()} class="w-4/6 md:w-2/6 h-2/6 md:h-4/6 bg-sky btn rounded-full text-3xl md:text-9xl">{ButtonNumber}</button>
+      <button id="Button" on:click={()=>Button()} class="w-4/6 md:w-2/6 h-2/6 md:h-4/6 bg-sky btn rounded-full text-3xl md:text-9xl">{ButtonNumber}</button>
   </div>
 </div>
 <style>

@@ -5,21 +5,15 @@
   import { HighScore, Bruker } from '/src/stores'
 
   let ButtonNumber = 0 
-  let Sjanse = 100
   
   async function Button(){
     ButtonNumber = ButtonNumber + 1
 
-    Sjanse = 100 / ButtonNumber
-    Sjanse = Math.round(Sjanse)
-  
-    let Random = Math.round(Math.random() * Sjanse) 
-    console.log("sjanse", Sjanse)
+    let Random = Math.round(Math.random() * 99) 
     console.log("Random", Random)
    
-    if(Random == Sjanse){
+    if(Random <= ButtonNumber - 1){
       ButtonNumber = 0
-      Sjanse = 100 
       console.log("død")
     }
 

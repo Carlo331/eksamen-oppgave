@@ -21,6 +21,7 @@
             console.log('User data:', userData)
             HighScore.set(userData.HighScore)
             Bruker.set(BrukerNavn)
+            alert('Du er Logget in: ' + BrukerNavn)
         } 
         else {
           alert('Feil password')

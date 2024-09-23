@@ -64,7 +64,7 @@
         </div>
         <div class="flex justify-evenly w-5/6 h-1/6">
             <button class="bg-navy btn text-sky text-2xl w-28 h-12 rounded" on:click={()=>login()}>Login</button>
-            <button class="bg-navy btn text-sky text-2xl w-12 h-12 rounded" on:click={()=>PopupI.set(false)}>X</button>
+            <button class="bg-navy btn text-sky text-2xl mr-3 ml-3 w-12 h-12 rounded" on:click={()=>PopupI.set(false)}>X</button>
             <button class="bg-navy btn text-sky text-2xl w-28 h-12 rounded" on:click={()=>register()}>Register</button>
         </div>
       </div>

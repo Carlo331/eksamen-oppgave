@@ -1,7 +1,7 @@
 <script>
     import { db } from '/src/lib/firebase';
     import { doc, setDoc, getDoc } from 'firebase/firestore';
-    import { HighScore, Bruker, Popup } from '/src/stores'
+    import { HighScore, Bruker, PopupI } from '/src/stores'
     import bcrypt from 'bcryptjs'
 
     let BrukerNavn = ""
@@ -19,7 +19,7 @@
             console.log('User data:', userData)
             HighScore.set(userData.HighScore)
             Bruker.set(BrukerNavn)
-            $Popup = false
+            $PopupI = false
         } 
         else {
           alert('Feil password')
@@ -48,7 +48,7 @@
         })
         console.log('User registered:', BrukerNavn)   
         await login() 
-        $Popup = false
+        $PopupI = false
       }
     } 
     catch (error) {
@@ -59,13 +59,13 @@
 
       <div class="flex flex-col items-center justify-between absolute z-10 w-5/6 md:w-2/6 h-4/6 border-2 border-sky bg-blue rounded-xl mt-16">
         <div class="flex flex-col w-5/6 h-2/6 justify-evenly">
-            <input class="bg-navy text-xl rounded w-full h-12" type="email" bind:value={BrukerNavn} placeholder="Bruker Navn" />
-            <input class="bg-navy text-xl rounded w-full h-12" type="password" bind:value={Password} placeholder="Password" />
+            <input maxlength="13" class="bg-navy text-sky text-xl rounded w-full h-12" type="email" bind:value={BrukerNavn} placeholder="Bruker Navn" />
+            <input class="bg-navy text-sky text-xl rounded w-full h-12" type="password" bind:value={Password} placeholder="Password" />
         </div>
         <div class="flex justify-evenly w-5/6 h-1/6">
-            <button class="bg-navy btn text-2xl w-28 h-12 rounded" on:click={()=>login()}>Login</button>
-            <button class="bg-navy btn text-2xl w-12 h-12 rounded" on:click={()=>Popup.set(false)}>X</button>
-            <button class="bg-navy btn text-2xl w-28 h-12 rounded" on:click={()=>register()}>Register</button>
+            <button class="bg-navy btn text-sky text-2xl w-28 h-12 rounded" on:click={()=>login()}>Login</button>
+            <button class="bg-navy btn text-sky text-2xl w-12 h-12 rounded" on:click={()=>PopupI.set(false)}>X</button>
+            <button class="bg-navy btn text-sky text-2xl w-28 h-12 rounded" on:click={()=>register()}>Register</button>
         </div>
       </div>
 

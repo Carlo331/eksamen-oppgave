@@ -2,8 +2,9 @@
   import "../app.css";
   import { db } from '/src/lib/firebase';
   import { doc, updateDoc, getDoc } from 'firebase/firestore';
-  import { HighScore, Bruker } from '/src/stores'
+  import { HighScore, Bruker, Popup } from '/src/stores'
   import { onMount } from "svelte";
+  import Login from './scoreboard/login.svelte'
 
   let ButtonNumber = 0 
 
@@ -62,6 +63,9 @@
   })
 </script>
 <div id="main" class="flex flex-col items-center bg-black w-screen h-screen">
+  {#if $Popup}
+    <Login/>
+  {/if}
   <div id="navbar" class="flex justify-evenly items-center w-full h-1/6 bg-navy">
       <a href="/scoreboard" class="flex justify-center btn items-center w-1/5 md:w-1/6 h-1/4 rounded-lg font-mono text-xs md:text-xl bg-blue">
           Scoreboard
@@ -69,9 +73,9 @@
       <div class="flex justify-center items-center w-2/6 h-1/4 md:w-1/5 md:h-2/5 rounded-lg bg-blue font-mono text-base md:text-3xl">
           Highscore {$HighScore}
       </div>
-        <a href="/login" class="flex justify-center btn items-center w-1/6 md:w-1/12 h-1/4 rounded-lg bg-blue font-mono text-xs md:text-xl">
+        <button on:click={()=> {Popup.set(true)}} class="flex justify-center btn items-center w-1/6 md:w-1/12 h-1/4 rounded-lg bg-blue font-mono text-xs md:text-xl">
             Logg inn 
-        </a>
+        </button>
         <div class="flex justify-center items-center w-1/6 md:w-1/12 h-1/4 rounded-lg bg-blue font-mono text-xs md:text-xl">
             {$Bruker}
         </div>

@@ -71,16 +71,16 @@
     <Scoreboard/>
   {/if}
   <div id="navbar" class="flex justify-evenly items-center w-full h-1/6 bg-navy">
-      <button on:click={()=> {PopupS.set(true)}} class="flex justify-center border-2 border-black btn items-center w-1/5 md:w-1/6 h-1/4 rounded-lg font-mono text-xs md:text-xl bg-blue">
+      <button on:click={()=> {PopupS.set(true)}} class="flex justify-center btn items-center w-1/5 md:w-1/6 h-1/4 rounded-lg font-mono text-xs md:text-xl bg-blue">
           Scoreboard
       </button>
-      <div class="flex justify-center border-2 border-black items-center w-2/6 h-1/4 md:w-1/5 md:h-2/5 rounded-lg bg-blue font-mono text-base md:text-3xl">
+      <div class="flex justify-center items-center w-2/6 h-1/4 md:w-1/5 md:h-2/5 rounded-lg bg-blue font-mono text-base md:text-3xl">
           Highscore {$HighScore}
       </div>
-        <button on:click={()=> {PopupI.set(true)}} class="flex justify-center border-2 border-black btn items-center w-1/6 md:w-1/12 h-1/4 rounded-lg bg-blue font-mono text-xs md:text-xl">
+        <button on:click={()=> {PopupI.set(true)}} class="flex justify-center btn items-center w-1/6 md:w-1/12 h-1/4 rounded-lg bg-blue font-mono text-xs md:text-xl">
             Logg inn 
         </button>
-        <div class="flex justify-center border-2 border-black items-center w-1/6 md:w-1/12 h-1/4 rounded-lg bg-blue font-mono text-xs md:text-xl">
+        <div class="flex justify-center items-center w-1/6 md:w-1/12 h-1/4 rounded-lg bg-blue font-mono text-xs md:text-xl">
             {$Bruker}
         </div>
   </div>
@@ -95,22 +95,4 @@
   .btn:active {
     transform: scale(0.95);
   }
-  ::-webkit-scrollbar {
-  width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #888;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
 </style>
